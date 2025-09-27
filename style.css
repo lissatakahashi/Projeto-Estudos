@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #c655e9;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Conteúdo principal */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.pomodoro-container {
+    background-color: white;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    display: flex;
+    flex-direction: column;  /* mantém timer em cima e botões abaixo */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+#timer {
+    font-size: 48px;
+    font-weight: bold;
+    color: #c655e9;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px; /* espaço entre os botões */
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #c655e9;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #8414a7;
+}
+
+footer {
+    background-color: #eee;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* .landing-header {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #ff6b6b;
+    color: white;
+} */
+
+.landing-header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.landing-header p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.landing-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px;
+}
+
+.cabecalho-menu-item {
+    color: white;
+    text-decoration: none;
+}
+
+.cabecalho-menu-item:hover {
+    color: rgb(244, 244, 244);
+}
+
+.cta-button {
+    background-color: #c655e9;
+    color: white;
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+
+.cta-button:hover {
+    background-color: #8414a7;
+}
+
+.moedas-info {
+    position: absolute;
+    top: 130px; /* distância a partir do topo */
+    left: 20px; /* distância da lateral esquerda */
+    font-size: 18px;
+}
+
+.conteudo-principal-imagem {
+    flex: 1;
+    height: auto;
+    max-width: 400px;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+.botao-ambiente {
+    display: block;
+    margin: 20px auto 0 auto; /* margem superior de 20px e centralização horizontal */
+    background-color: #c655e9;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.botao-ambiente:hover {
+    background-color: #8414a7;
+}
+
+.reset-sessoes {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.reset-sessoes:hover {
+  background-color: #c62828;
+}
+

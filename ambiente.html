@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambiente</title>
+    <link rel="stylesheet" href="ambiente.css">
+</head>
+<body>
+    <header>
+        <h1>Seu Ambiente Virtual</h1>
+    </header>
+    <main class="ambiente-container">
+        <section class="moedas-info">
+            <p>&#x1FA99; Moedas: 0</p>
+        </section>
+        <section class="quarto">
+            <div class="avatar">
+                <img src="imagens/criancatriste.png" alt="Criança triste">
+            </div>
+        </section>
+        
+        <a href="loja.html" class="botao-loja">Loja</a>
+        <a href="pomodoro.html" class="botao-pomodoro">Pomodoro</a>
+        <footer>
+            <p>&copy; 2025 - Sistema de Engajamento nos Estudos</p>
+        </footer>
+        <!-- Botão para abrir o inventário -->
+        <button id="abrir-inventario" class="botao-inventario">Inventário</button>
+
+        <!-- Inventário deslizante -->
+        <div id="inventario" class="inventario">
+            <h2>Inventário</h2>
+            <div class="itens-inventario" id="itens-inventario">
+                <!-- Itens comprados aparecerão aqui -->
+            </div>
+            <button id="fechar-inventario" class="fechar-inventario">Fechar</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
