@@ -21,6 +21,3 @@ Este projeto é uma proposta de uma plataforma web por meio de gamificação par
 
 ## 🌐 Como acessar online
 O projeto está hospedado no GitHub Pages. Para acessá-lo, clique neste link: 🔗https://lissatakahashi.github.io/projeto-estudos/
-
-## 📅 Status do projeto
-🟢 Em desenvolvimento
