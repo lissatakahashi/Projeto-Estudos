@@ -18,3 +18,6 @@ Este projeto é uma proposta de uma plataforma web por meio de gamificação par
 - Abra o projeto no Visual Studio Code
 - Clique com o botão direito no arquivo index.html
 - Clique em "Open with Live Server" (se tiver a extensão instalada)
+
+## 🌐 Como acessar online
+O projeto está hospedado no GitHub Pages. Para acessá-lo, clique neste link: 🔗https://lissatakahashi.github.io/projeto-estudos/
