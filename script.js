@@ -81,9 +81,16 @@ function concluirSessao() {
     localStorage.setItem("ultimoCuidado", Date.now());
 
     somAlarme.play();
-    alert("Sessão concluída! Você ganhou 5 moedas!");
-    somAlarme.pause();
-    somAlarme.currentTime = 0;
+    Swal.fire({
+        title: 'Sessão concluída! 🎉',
+        text: 'Você ganhou 5 moedas!',
+        icon: 'success',
+        confirmButtonColor: '#4caf50',
+        confirmButtonText: 'Ok'
+    }).then(() => {
+        somAlarme.pause();
+        somAlarme.currentTime = 0;
+    });
 
     verificarEstadoBichinho(); // atualiza imagem imediatamente
 }
@@ -193,7 +200,13 @@ function darComida(index) {
     localStorage.setItem("estadoBichinho", "feliz");
     localStorage.setItem("ultimoCuidado", Date.now());
 
-    alert(`Você deu ${comida.nome} ao bichinho! Ele está feliz!`);
+    Swal.fire({
+        title: 'Bichinho alimentado!',
+        text: `Você deu ${comida.nome} ao bichinho! Ele está feliz!`,
+        icon: 'success',
+        confirmButtonColor: '#4caf50',
+        confirmButtonText: 'Bacana!'
+    });
 
     // Atualiza imagem depois de 2 segundos
     setTimeout(verificarEstadoBichinho, 2000);
@@ -206,7 +219,14 @@ function resetSessions() {
     sessions = 0;
     localStorage.setItem("sessions", sessions);
     if (sessionsDisplay) sessionsDisplay.textContent = sessions;
-    alert("As sessões foram resetadas!");
+
+    Swal.fire({
+        title: 'Sessões resetadas!',
+        text: 'O contador de sessões foi zerado.',
+        icon: 'warning',
+        confirmButtonColor: '#f8bb86',
+        confirmButtonText: 'Ok'
+    });
 }
 
 if (resetSessionsButton) {
@@ -233,9 +253,21 @@ function comprarItem(nome, preco, imagem) {
         inventario.push({ nome, imagem });
         localStorage.setItem("inventario", JSON.stringify(inventario));
 
-        alert(`${nome} comprado com sucesso!`);
+        Swal.fire({
+            title: 'Compra realizada!',
+            text: `${nome} foi adicionado ao seu inventário!`,
+            icon: 'success',
+            confirmButtonColor: '#4caf50',
+            confirmButtonText: 'Ok'
+        });
     } else {
-        alert("Você não tem moedas suficientes!");
+        Swal.fire({
+            title: 'Moedas insuficientes!',
+            text: 'Você não tem moedas suficientes para esta compra.',
+            icon: 'error',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Entendi'
+        });
     }
 }
 
