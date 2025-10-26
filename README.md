@@ -20,4 +20,4 @@ Este projeto é uma proposta de uma plataforma web por meio de gamificação par
 - Clique em "Open with Live Server" (se tiver a extensão instalada)
 
 ## 🌐 Como acessar online
-O projeto está hospedado no GitHub Pages. Para acessá-lo, clique neste link: 🔗https://lissatakahashi.github.io/projeto-estudos/
+O projeto está hospedado pelo GitHub Pages. Para acessá-lo, clique neste link: 🔗https://lissatakahashi.github.io/projeto-estudos/
