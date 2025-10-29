@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Método Pomodoro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Método Pomodoro</h1>
     </header>
+
     <a href="index.html" class="botao-voltar" title="Voltar para a página inicial">⟵</a>
+
     <main>
         <section class="moedas-info">
             <p>&#x1FA99; Moedas: 0</p>
         </section>
+
         <section>
             <button id="reset-sessions" class="reset-sessoes">Resetar Sessões</button>
             <div class="pomodoro-container">
@@ -28,10 +31,58 @@
             </div>
             <a href="ambiente.html" class="botao-ambiente">Ir para o ambiente virtual</a>
         </section>
-    </main>
-    <footer>
 
+        <!-- ========================= -->
+        <!-- ÁREA DE TÓPICOS DE ESTUDO -->
+        <!-- ========================= -->
+        <section class="topicos-estudo">
+            <h2>Tópicos de Estudo</h2>
+
+            <!-- Campo para adicionar novo tópico -->
+            <div class="adicionar-topico">
+                <input type="text" placeholder="Digite o nome do tópico..." id="novo-topico">
+                <button id="btn-adicionar">Adicionar Tópico</button>
+            </div>
+
+            <!-- Lista de tópicos (estática) -->
+            <div class="lista-topicos">
+                <div class="topico">
+                    <div class="topico-header">
+                        <h3>Revolução Francesa</h3>
+                        <div class="botoes-topico">
+                            <button class="iniciar">Iniciar</button>
+                            <button class="concluir">Concluir</button>
+                            <button class="excluir">Excluir</button>
+                        </div>
+                    </div>
+                    <div class="horarios">
+                        <p><strong>Início:</strong> 28/10/2025 - 14:00</p>
+                        <p><strong>Término:</strong> 10/11/2025 - 14:25</p>
+                    </div>
+                </div>
+
+                <div class="topico">
+                    <div class="topico-header">
+                        <h3>Frações algébricas</h3>
+                        <div class="botoes-topico">
+                            <button class="iniciar">Iniciar</button>
+                            <button class="concluir">Concluir</button>
+                            <button class="excluir">Excluir</button>
+                        </div>
+                    </div>
+                    <div class="horarios">
+                        <p><strong>Início:</strong> 28/10/2025 - 15:00</p>
+                        <p><strong>Término:</strong> 02/11/2025 - 15:30</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 - Método Pomodoro</p>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 </body>

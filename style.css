@@ -198,7 +198,7 @@ footer {
     width: 40px;
     height: 40px;
     margin: 15px 0 10px 20px;
-    background-color: #f44336;
+    background-color: #c655e9;
     color: white;
     text-decoration: none;
     border-radius: 50%; /* deixa redondo */
@@ -210,4 +210,111 @@ footer {
 .botao-voltar:hover {
     background-color: #d32f2f;
     transform: scale(1.05); /* pequeno efeito de zoom ao passar o mouse */
+}
+
+/* ====== SEÇÃO DE TÓPICOS ====== */
+.topicos-estudo {
+    margin-left: 50px;
+    margin-top: 40px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.topicos-estudo h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Campo para adicionar novo tópico */
+.adicionar-topico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.adicionar-topico input {
+    flex: 1;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+.adicionar-topico button {
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.adicionar-topico button:hover {
+    background-color: #ff4c4c;
+}
+
+/* Estilo dos tópicos */
+.lista-topicos .topico {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fafafa;
+}
+
+.topico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topico-header h3 {
+    margin: 0;
+    color: #444;
+}
+
+.botoes-topico {
+    display: flex;
+    gap: 8px;
+}
+
+.botoes-topico button {
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+    color: white;
+}
+
+.botoes-topico .iniciar {
+    background-color: #4caf50;
+}
+
+.botoes-topico .concluir {
+    background-color: #2196f3;
+}
+
+.botoes-topico .excluir {
+    background-color: #e53935;
+}
+
+.botoes-topico button:hover {
+    opacity: 0.85;
+}
+
+.horarios {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.4;
 }
