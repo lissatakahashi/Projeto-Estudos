@@ -1,0 +1,10 @@
+# MCP Server Context7 configuration for Projeto-Estudos
+# Consulte a documentação oficial para opções avançadas
+
+server:
+  provider: context7
+  enabled: true
+  port: 8080
+  workspace: .
+
+# Adicione configurações específicas do contexto, se necessário
