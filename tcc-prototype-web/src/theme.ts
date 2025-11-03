@@ -1,9 +1,14 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
 
-const theme = createTheme({
+type Mode = 'light' | 'dark';
+
+const getDesignTokens = (mode: Mode = 'light'): ThemeOptions => ({
+  spacing: 8,
   palette: {
+    mode,
     primary: {
       main: '#0e7490', // brand 600-ish
+      light: '#e6f6fb',
       dark: '#0c596e',
       contrastText: '#ffffff',
     },
@@ -11,12 +16,12 @@ const theme = createTheme({
       main: '#f3f7fb',
     },
     background: {
-      default: '#ffffff',
-      paper: '#f9fafb',
+      default: mode === 'dark' ? '#061421' : '#ffffff',
+      paper: mode === 'dark' ? '#071826' : '#f9fafb',
     },
     text: {
-      primary: '#0f1724',
-      secondary: '#6b7280',
+      primary: mode === 'dark' ? 'rgba(255,255,255,0.92)' : '#0f1724',
+      secondary: mode === 'dark' ? 'rgba(255,255,255,0.72)' : '#6b7280',
     },
   },
   shape: {
@@ -27,13 +32,17 @@ const theme = createTheme({
     h1: {
       fontWeight: 800,
       lineHeight: 1.05,
-      fontSize: '2.25rem', // ~36px
+      fontSize: '2.25rem', // ~36px (mobile)
+      '@media (min-width:600px)': {
+        fontSize: '2.75rem',
+      },
       '@media (min-width:900px)': {
-        fontSize: '2.5rem',
+        fontSize: '3.5rem', // larger hero heading on desktop
       },
     },
     h2: {
       fontWeight: 700,
+      fontSize: '1.5rem',
     },
     body1: {
       fontSize: '1rem',
@@ -49,6 +58,34 @@ const theme = createTheme({
         root: {
           textTransform: 'none',
           borderRadius: 999,
+          padding: '8px 18px',
+          fontWeight: 600,
+        },
+        containedPrimary: {
+          backgroundColor: '#0e7490',
+          color: '#fff',
+          '&:hover': {
+            backgroundColor: '#0c596e',
+          },
+        },
+        outlined: {
+          borderWidth: 1,
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+          // paper background will use palette.paper from tokens; keep undefined here to let theme apply it
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+          boxShadow: mode === 'dark' ? '0 6px 18px rgba(2,6,23,0.18)' : '0 6px 20px rgba(2,6,23,0.04)',
         },
       },
     },
@@ -59,5 +96,10 @@ const theme = createTheme({
     },
   },
 });
+
+export const createAppTheme = (mode: Mode = 'light') => createTheme(getDesignTokens(mode));
+
+// default export remains the light theme for backwards compatibility
+const theme = createAppTheme('light');
 
 export default theme;

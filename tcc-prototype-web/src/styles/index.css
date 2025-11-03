@@ -156,24 +156,101 @@ a{ color:var(--color-brand-600); }
 
 /* Ajuste de acessibilidade do link de pulo */
 .skip-link {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  /* fixed top-left control: icon sits inside the AppBar area; the label
+    is absolutely positioned below the AppBar so it won't overlap the menu. */
+  position: fixed;
+  top: 8px; /* place the icon inside the AppBar */
+  left: 1rem;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px; /* keep small for the icon-only state */
+  border-radius: 999px;
+  background: transparent; /* icon will have its own background */
+  color: var(--color-brand-600);
+  text-decoration: none;
+  box-shadow: none;
+
+  /* hidden/low-contrast by default (we still show the icon) */
+  opacity: 0.95;
+  transform: none;
+  pointer-events: auto;
+  transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease;
 }
 
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  width: auto;
-  height: auto;
-  padding: 8px 12px;
+/* visible when focused (keyboard navigation) */
+.skip-link:focus,
+.skip-link:focus-visible,
+.skip-link:hover,
+.show-skip-on-load .skip-link {
+  background: var(--color-brand-600);
+  color: var(--color-brand-contrast);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+  padding: 8px 14px; /* expand to show label */
+}
+
+/* ensure no underline when visible */
+.skip-link:focus, .skip-link:focus:active, .skip-link:focus-visible { text-decoration: none; }
+
+/* icon and label styling inside skip-link */
+.skip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   background: var(--color-surface);
-  color: var(--color-ink);
-  border: 1px solid rgba(0,0,0,0.06);
-  z-index: 9999;
+  color: var(--color-brand-600);
+  box-shadow: 0 2px 8px rgba(2,6,23,0.04);
+}
+.skip-label {
+  /* positioned below the AppBar so it doesn't overlap the nav */
+  position: absolute;
+  /* position the label to the right of the icon so it isn't cut by the window edge */
+  left: 44px;
+  top: calc(var(--app-bar-height, 56px) + 8px); /* below the app bar */
+  transform: translateY(6px);
+  display: inline-block;
+  background: var(--color-brand-600);
+  color: var(--color-brand-contrast);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  white-space: nowrap;
+  font-weight: 700;
+  min-width: 160px;
+  max-width: calc(100vw - 96px);
+}
+
+/* reveal label when hover/focus/show-on-load */
+.skip-link:hover .skip-label,
+.skip-link:focus .skip-label,
+.show-skip-on-load .skip-link .skip-label,
+.skip-link:focus-visible .skip-label {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* (label styles above) */
+
+/* keep it visible by default on small screens for discoverability */
+@media (max-width: 640px) {
+  .skip-link { background: var(--color-brand-600); color: var(--color-brand-contrast); padding: 8px 14px; }
+  .skip-icon { background: transparent; color: var(--color-brand-contrast); box-shadow: none; }
+  .skip-label { opacity: 1; transform: none; }
+}
+
+/* show briefly on initial load when body has class show-skip-on-load */
+.show-skip-on-load .skip-link {
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
 }
 
 @media (min-width: 640px){

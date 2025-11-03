@@ -1,5 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
 
 const CookieBanner: React.FC = () => {
   const storageKey = 'privacyConsent';
@@ -18,6 +23,7 @@ const CookieBanner: React.FC = () => {
       setAccepted(true);
     } catch (e) {
       // Silently fail if localStorage is not available
+      // eslint-disable-next-line no-console
       console.warn('LocalStorage não disponível:', e);
     }
   };
@@ -25,38 +31,51 @@ const CookieBanner: React.FC = () => {
   if (accepted) return null;
 
   return (
-    <div
+    <Box
+      component="div"
       role="dialog"
       aria-labelledby="cookie-banner-title"
       aria-describedby="cookie-banner-description"
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[min(92vw,960px)] bg-surface dark:bg-card border border-black/10 dark:border-white/10 p-5 rounded-xl shadow-lg z-50"
+      sx={{
+        position: 'fixed',
+        bottom: 16,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 'min(92vw,960px)',
+        zIndex: (theme) => theme.zIndex.snackbar + 1,
+      }}
     >
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div className="flex-1">
-          <h3 id="cookie-banner-title" className="font-semibold text-sm mb-1 text-ink">
+      <Paper
+        elevation={6}
+        sx={{
+          p: 2,
+          borderRadius: 2,
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          alignItems: { xs: 'flex-start', md: 'center' },
+          gap: 2,
+          border: (theme) => `1px solid ${theme.palette.divider}`,
+        }}
+      >
+        <Box sx={{ flex: 1 }}>
+          <Typography id="cookie-banner-title" variant="subtitle1" sx={{ fontWeight: 700, mb: 0.5 }}>
             Privacidade e Dados Locais
-          </h3>
-          <p id="cookie-banner-description" className="text-sm text-muted">
-            Usamos armazenamento local para salvar suas preferências e progresso.
-            Nenhum dado é enviado para servidores externos neste protótipo.
-          </p>
-        </div>
-        <div className="flex items-center gap-3 flex-shrink-0">
-          <Link
-            to="/privacy"
-            className="text-sm text-brand-600 hover:text-brand-700 underline focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded px-1"
-          >
+          </Typography>
+          <Typography id="cookie-banner-description" variant="body2" color="text.secondary">
+            Usamos armazenamento local para salvar suas preferências e progresso. Nenhum dado é enviado para servidores externos neste protótipo.
+          </Typography>
+        </Box>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexShrink: 0 }}>
+          <Link component={RouterLink} to="/privacy" underline="hover" sx={{ fontSize: '0.9rem' }}>
             Saiba mais
           </Link>
-          <button
-            onClick={accept}
-            className="inline-flex items-center justify-center bg-brand-600 text-brand-contrast px-4 py-2 rounded-lg font-semibold text-sm hover:bg-brand-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 whitespace-nowrap"
-          >
+          <Button onClick={accept} variant="contained" color="primary" sx={{ whiteSpace: 'nowrap' }}>
             Aceitar
-          </button>
-        </div>
-      </div>
-    </div>
+          </Button>
+        </Box>
+      </Paper>
+    </Box>
   );
 };
 

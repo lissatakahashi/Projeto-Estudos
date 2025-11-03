@@ -1,26 +1,12 @@
 import React from 'react';
+import { ThemeModeContext } from '../../contexts/ThemeModeContext';
 
 const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>(() => (document.documentElement.getAttribute('data-theme') as 'light' | 'dark') || 'light');
-
-  React.useEffect(() => {
-    const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.setAttribute('data-theme', saved);
-    }
-  }, []);
-
-  const toggle = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  };
+  const { mode, toggleMode } = React.useContext(ThemeModeContext);
 
   return (
-    <button aria-label="Alternar tema" onClick={toggle} className="px-2 py-1 rounded border">
-      {theme === 'dark' ? '🌙' : '☀️'}
+    <button aria-label="Alternar tema" onClick={toggleMode} className="px-2 py-1 rounded border">
+      {mode === 'dark' ? '🌙' : '☀️'}
     </button>
   );
 };

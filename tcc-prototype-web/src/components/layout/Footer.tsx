@@ -1,103 +1,119 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Divider from '@mui/material/Divider';
 
 const year = new Date().getFullYear();
 
 const Footer: React.FC = () => (
-  <footer className="bg-surface dark:bg-card border-t border-black/5 dark:border-white/5 py-12">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1120px]">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
-        <div>
-          <h4 className="font-semibold mb-3 text-ink">Produto</h4>
+  <Box component="footer" sx={{ bgcolor: 'background.paper', borderTop: (t) => `1px solid ${t.palette.divider}`, py: { xs: 6, md: 8 } }}>
+    <Container>
+      <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mb: 3 }}>
+        <Grid item xs={6} md={3}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1.5 }}>
+            Produto
+          </Typography>
           <nav aria-label="Produto">
-            <ul className="space-y-2">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 8 }}>
               <li>
-                <Link to="/pomodoro" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/pomodoro" color="text.secondary">
                   Pomodoro
                 </Link>
               </li>
               <li>
-                <Link to="/shop" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/shop" color="text.secondary">
                   Loja
                 </Link>
               </li>
               <li>
-                <Link to="/inventory" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/inventory" color="text.secondary">
                   Inventário
                 </Link>
               </li>
             </ul>
           </nav>
-        </div>
+        </Grid>
 
-        <div>
-          <h4 className="font-semibold mb-3 text-ink">Recursos</h4>
+        <Grid item xs={6} md={3}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1.5 }}>
+            Recursos
+          </Typography>
           <nav aria-label="Recursos">
-            <ul className="space-y-2">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 8 }}>
               <li>
-                <Link to="/history" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/history" color="text.secondary">
                   Histórico
                 </Link>
               </li>
               <li>
-                <Link to="/badges" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/badges" color="text.secondary">
                   Badges
                 </Link>
               </li>
             </ul>
           </nav>
-        </div>
+        </Grid>
 
-        <div>
-          <h4 className="font-semibold mb-3 text-ink">Institucional</h4>
+        <Grid item xs={6} md={3}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1.5 }}>
+            Institucional
+          </Typography>
           <nav aria-label="Institucional">
-            <ul className="space-y-2">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 8 }}>
               <li>
-                <Link to="/about" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/about" color="text.secondary">
                   Sobre
                 </Link>
               </li>
               <li>
-                <Link to="/method" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/method" color="text.secondary">
                   Metodologia
                 </Link>
               </li>
             </ul>
           </nav>
-        </div>
+        </Grid>
 
-        <div>
-          <h4 className="font-semibold mb-3 text-ink">Legal</h4>
+        <Grid item xs={6} md={3}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1.5 }}>
+            Legal
+          </Typography>
           <nav aria-label="Legal">
-            <ul className="space-y-2">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 8 }}>
               <li>
-                <Link to="/privacy" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/privacy" color="text.secondary">
                   Privacidade
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-muted hover:text-foreground transition-colors">
+                <Link component={RouterLink} to="/terms" color="text.secondary">
                   Termos
                 </Link>
               </li>
             </ul>
           </nav>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
 
-      <div className="border-t border-black/5 dark:border-white/5 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+      <Divider sx={{ mb: 3 }} />
+
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'center', justifyContent: 'space-between', gap: 2, fontSize: 12, color: 'text.secondary' }}>
         <div>© {year} tcc-prototype. Todos os direitos reservados.</div>
-        <div className="flex items-center gap-4">
-          <Link to="/privacy" className="hover:text-foreground transition-colors">
+        <Box sx={{ display: 'flex', gap: 3 }}>
+          <Link component={RouterLink} to="/privacy" color="text.secondary">
             Política de Privacidade
           </Link>
-          <Link to="/terms" className="hover:text-foreground transition-colors">
+          <Link component={RouterLink} to="/terms" color="text.secondary">
             Termos de Uso
           </Link>
-        </div>
-      </div>
-    </div>
-  </footer>
+        </Box>
+      </Box>
+    </Container>
+  </Box>
 );
 
 export default Footer;
