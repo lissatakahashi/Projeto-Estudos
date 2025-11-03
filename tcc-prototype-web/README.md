@@ -43,3 +43,29 @@ npm run e2e
 
 ## Escopo
 Protótipo paralelo sem backend. Guardamos preferências e progresso em localStorage (LGPD: apenas local).
+
+## Rodando com Docker (portas ajustadas)
+
+Se você tem outra aplicação usando as portas padrão do Vite, alterei as portas do protótipo para evitar conflito:
+
+- Desenvolvimento (dev server): http://localhost:5174 (mapeado via docker-compose)
+- Preview/produção (vite preview): porta 4174
+
+Usando docker-compose (modo dev):
+
+```bash
+cd tcc-prototype-web
+docker compose up --build
+```
+
+Acessar: http://localhost:5174
+
+Build de produção e rodar a imagem:
+
+```bash
+cd tcc-prototype-web
+docker build -t tcc-prototype-web:latest .
+docker run -p 4174:4174 tcc-prototype-web:latest
+```
+
+Se preferir restaurar as portas padrão (5173/4173), posso ajustar os arquivos novamente.

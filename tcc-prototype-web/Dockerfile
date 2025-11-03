@@ -21,6 +21,6 @@ ENV NODE_ENV=production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-EXPOSE 4173
+EXPOSE 4174
 # Use vite preview to serve the build (requires node_modules present)
 CMD ["npm","run","start"]

@@ -5,20 +5,20 @@ Criar tudo que for preciso para rodar o protótipo `tcc-prototype-web` em Docker
 
 Requisitos que devem ser atendidos:
 - Dockerfile multi-stage que permita construir a aplicação e servir a build com `vite preview`.
-- `docker-compose.yml` para rodar em desenvolvimento com volume montado e porta mapeada (5173).
+- `docker-compose.yml` para rodar em desenvolvimento com volume montado e porta mapeada (ajustada para evitar conflito).
 - `.dockerignore` para evitar copiar `node_modules`, `dist`, `.git`, etc.
-- `package.json` atualizado com um script `start` apropriado para produção (preview) — ex.: `vite preview --host 0.0.0.0 --port 4173`.
+- `package.json` atualizado com um script `start` apropriado para produção (preview) — ex.: `vite preview --host 0.0.0.0 --port 4174`.
 - Registrar este prompt e o retorno do assistente em arquivo separado (número sequencial).
 
 Ações realizadas (resumo do retorno do assistente):
-- Adicionei `tcc-prototype-web/Dockerfile` (multi-stage) que:
+-- Adicionei `tcc-prototype-web/Dockerfile` (multi-stage) que:
   - instala dependências,
   - roda `npm run build`,
-  - copia `dist` e `node_modules` para a imagem final e expõe a porta 4173;
-  - comando final: `npm run start` (onde `start` usa `vite preview --host 0.0.0.0 --port 4173`).
-- Adicionei `tcc-prototype-web/docker-compose.yml` configurado para desenvolvimento:
-  - monta `./tcc-prototype-web` em `/app`, mantém `node_modules` do container, e executa `npm run dev -- --host 0.0.0.0`;
-  - mapeia a porta `5173:5173`.
+  - copia `dist` e `node_modules` para a imagem final e expõe a porta 4174 (alterada para evitar conflito);
+  - comando final: `npm run start` (onde `start` usa `vite preview --host 0.0.0.0 --port 4174`).
+-- Adicionei `tcc-prototype-web/docker-compose.yml` configurado para desenvolvimento:
+  - monta `./tcc-prototype-web` em `/app`, mantém `node_modules` do container, e executa `npm run dev -- --host 0.0.0.0 --port 5174`;
+  - mapeia a porta `5174:5174` (host 5174 para evitar conflito com outra aplicação em 5173).
 - Adicionei `tcc-prototype-web/.dockerignore` (node_modules, dist, .vscode, .git, .env, logs).
 - Atualizei `tcc-prototype-web/package.json` para incluir o script `start`.
 - Comitei todas as mudanças na branch `tcc-prototype-web/init`.
@@ -31,15 +31,15 @@ cd tcc-prototype-web
 docker compose up --build
 ```
 
-Acessar: http://localhost:5173
+Acessar: http://localhost:5174
 
 2) Build de produção e rodar o container (exemplo)
 
 ```bash
 # build image
 docker build -t tcc-prototype-web:latest .
-# run container (expõe 4173)
-docker run -p 4173:4173 tcc-prototype-web:latest
+# run container (expõe 4174)
+docker run -p 4174:4174 tcc-prototype-web:latest
 ```
 
 Notas / observações:
