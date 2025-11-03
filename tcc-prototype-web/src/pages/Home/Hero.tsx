@@ -1,77 +1,67 @@
 import React from 'react';
 import { motion } from '../../lib/motion';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 
 const Hero: React.FC = () => {
   return (
-    <section className="py-16 md:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1120px]">
-        <div className="grid md:grid-cols-2 md:gap-12 lg:gap-16 items-center">
-          <div>
-            <motion.h1
-              id="conteudo-principal"
+    <Box component="section" sx={{ py: { xs: 8, md: 10 } }}>
+      <Box sx={{ maxWidth: 1120, mx: 'auto', px: { xs: 2, sm: 3, lg: 4 } }}>
+        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
-              className="text-4xl sm:text-5xl font-extrabold tracking-tight text-ink mb-4"
             >
-              Foco com Pomodoro + Gamificação
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.06, duration: 0.25 }}
-              className="text-lg text-muted max-w-prose mb-6"
-            >
-              Use ciclos focados e recompensas simples para criar hábitos reais e mensuráveis.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.12, duration: 0.25 }}
-            >
-              <Link
-                to="/pomodoro"
-                className="inline-flex items-center justify-center bg-brand-600 text-brand-contrast px-6 py-3 rounded-lg font-semibold hover:bg-brand-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
-              >
-                Começar agora
-              </Link>
-              <Link
-                to="/about"
-                className="inline-flex items-center justify-center border border-muted/30 text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted/5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
-              >
-                Conheça a metodologia
-              </Link>
+              <Typography id="conteudo-principal" component="h1" variant="h1" sx={{ mb: 2 }}>
+                Foco com Pomodoro + Gamificação
+              </Typography>
             </motion.div>
-          </div>
 
-          <motion.div
-            className="order-first md:order-last flex justify-center md:justify-end"
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.25 }}
-            aria-hidden={true}
-          >
-            {/* Simple SVG placeholder illustration (decorative) */}
-            <svg
-              width="360"
-              height="240"
-              viewBox="0 0 360 240"
-              fill="none"
-              className="w-full max-w-[520px] mx-auto aspect-[4/3] rounded-2xl bg-[color:var(--card)]"
-            >
-              <rect x="0" y="0" width="360" height="240" rx="16" fill="var(--color-card)" />
-              <circle cx="80" cy="80" r="28" fill="var(--color-brand-600)" />
-              <rect x="130" y="60" width="180" height="18" rx="6" fill="#e6eef8" />
-              <rect x="130" y="90" width="120" height="14" rx="6" fill="#f1f5f9" />
-            </svg>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+            <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.06, duration: 0.25 }}>
+              <Typography variant="body1" color="text.secondary" sx={{ maxWidth: '60ch', mb: 3 }}>
+                Use ciclos focados e recompensas simples para criar hábitos reais e mensuráveis.
+              </Typography>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12, duration: 0.25 }}>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+                <Button component={RouterLink} to="/pomodoro" variant="contained" color="primary" sx={{ px: 4 }}>
+                  Começar agora
+                </Button>
+                <Button component={RouterLink} to="/about" variant="outlined" color="inherit" sx={{ px: 4 }}>
+                  Conheça a metodologia
+                </Button>
+              </Stack>
+            </motion.div>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.25 }} aria-hidden>
+              <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' } }}>
+                <Paper elevation={0} sx={{ width: '100%', maxWidth: 520, borderRadius: 3, p: 4, bgcolor: 'background.paper' }}>
+                  {/* Decorative placeholder illustration */}
+                  <Box sx={{ width: '100%', height: 0, pb: '75%', position: 'relative', borderRadius: 2, overflow: 'hidden', bgcolor: 'background.default' }}>
+                    <svg viewBox="0 0 360 240" fill="none" preserveAspectRatio="xMidYMid meet" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+                      <rect x="0" y="0" width="360" height="240" rx="16" fill="#f8fafc" />
+                      <circle cx="80" cy="80" r="28" fill="#0e7490" />
+                      <rect x="130" y="60" width="180" height="18" rx="6" fill="#e6eef8" />
+                      <rect x="130" y="90" width="120" height="14" rx="6" fill="#f1f5f9" />
+                    </svg>
+                  </Box>
+                </Paper>
+              </Box>
+            </motion.div>
+          </Grid>
+        </Grid>
+      </Box>
+    </Box>
   );
 };
 
