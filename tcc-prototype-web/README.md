@@ -37,6 +37,7 @@ npm run e2e
 ## Padrões e ferramentas
 - ESLint + Prettier (configuração recomendada), commitlint, husky, lint-staged
 - Tailwind CSS para UI
+ - MUI (Material UI) para UI (migrado de Tailwind)
 - React Router, Zustand
 - i18n preparado (pt-BR default)
 - Acessibilidade: integração de @axe-core/react em desenvolvimento
@@ -59,6 +60,10 @@ docker compose up --build
 ```
 
 Acessar: http://localhost:5174
+
+### Observações sobre o tema
+
+Este projeto foi migrado para usar MUI (Material UI) para componentes e tema. O provider padrão do MUI (`ThemeProvider`) e `CssBaseline` já estão configurados em `src/main.tsx` e o tema base está em `src/theme.ts`.
 
 Build de produção e rodar a imagem:
 

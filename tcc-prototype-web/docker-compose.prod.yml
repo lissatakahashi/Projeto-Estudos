@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: ./
+      target: runner
+    working_dir: /app
+    volumes:
+      - /app/node_modules
+    ports:
+      - "4174:4174"
+    environment:
+      NODE_ENV: production
+    stdin_open: true
+    tty: true
+    # Run as root in dev so Vite can manage the mounted files on macOS hosts (avoids EACCES)
+    user: root
+    # Ensure mounted files are writable by the container's node user, then start Vite
+    command: sh -c "chown -R node:node /app || true && npm run start -- --host 0.0.0.0 --port 4174"

@@ -1,18 +1,3 @@
-import type { Config } from 'tailwindcss';
-
-const config: Config = {
-  content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
-  theme: {
-    extend: {
-      colors: {
-        primary: 'var(--color-primary)',
-      },
-      borderRadius: {
-        md: '8px',
-      },
-    },
-  },
-  plugins: [],
-};
-
-export default config;
+// Tailwind configuration removed as the project migrated to MUI.
+// This file is kept as a historical artifact and should not be used.
+export {};

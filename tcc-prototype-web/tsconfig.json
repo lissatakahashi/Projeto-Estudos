@@ -12,7 +12,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "baseUrl": "./",
-    "types": ["vite/client","node"]
+    "types": [
+      "vite/client",
+      "node",
+      "vitest/globals",
+      "@testing-library/jest-dom",
+      "@playwright/test"
+    ]
   },
   "include": ["src", "src/**/*.d.ts"]
 }
