@@ -1,0 +1,275 @@
+/* Base visual mínima + fallbacks do Tailwind.
+   Este arquivo preserva as diretivas do Tailwind (se instalado) mas
+   também fornece uma folha de estilo leve e sem dependências para que
+   o app tenha aparência limpa e profissional mesmo quando o Tailwind não está ativo. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Marca (tons de azul petróleo) */
+  --color-brand-600: #0f6b88;
+  --color-brand-700: #0c5570;
+  --color-brand-800: #083d4c;
+  --color-brand-contrast: #ffffff;
+
+  /* Neutros / texto */
+  --color-ink: #111827; /* modo claro */
+  --color-muted: #6b7280; /* muted claro */
+
+  /* Superfícies */
+  --color-surface: #ffffff;
+  --color-card: #f9fafb;
+
+  --radius: 12px;
+}
+
+/* Variáveis do tema escuro (aplicadas quando .dark ou data-theme='dark' estão presentes) */
+:root[data-theme='dark'], .dark {
+  --color-brand-600: #1f6b86;
+  --color-brand-700: #15546a;
+  --color-brand-800: #0b3546;
+  --color-brand-contrast: #0b1220;
+
+  --color-ink: #e5e7eb;
+  --color-muted: #9ca3af;
+
+  --color-surface: #0b1220;
+  --color-card: #0f172a;
+}
+
+/* Layout base da página */
+html, body, #root {
+  height: 100%;
+}
+
+html { font-size: 15px; }
+
+body {
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.6;
+}
+
+/* Container centralizado responsivo */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .container { padding-left: 2rem; padding-right: 2rem; }
+}
+
+/* Cabeçalho / navegação superior */
+.site-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1rem 0;
+}
+
+.brand {
+  font-weight:700;
+  color:var(--color-brand-700);
+  text-decoration:none;
+}
+
+.nav-links a {
+  color:var(--color-muted);
+  margin-left:0.75rem;
+  text-decoration:none;
+  font-size:0.95rem;
+}
+
+.nav-links a:hover{ color:var(--color-ink); }
+
+/* Hero */
+.hero {
+  padding: 2.25rem 0 1.5rem;
+}
+
+.hero h1 {
+  margin:0 0 0.6rem 0;
+  font-size:2.25rem;
+  line-height:1.05;
+  font-weight:800;
+  color:var(--color-ink);
+}
+
+.hero p {
+  margin:0 0 1rem 0;
+  color:var(--color-muted);
+  font-size:1.05rem;
+  max-width: 56ch;
+}
+
+/* Botões */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--color-brand-600);
+  color:var(--color-brand-contrast);
+  padding:0.6rem 1rem;
+  border-radius:0.75rem;
+  text-decoration:none;
+  font-weight:600;
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out;
+}
+
+.btn:focus { outline: 3px solid rgba(15,23,42,0.12); outline-offset: 3px; }
+
+.btn.secondary{
+  background:transparent;
+  color:var(--color-brand-700);
+  border:1px solid rgba(11,124,255,0.08);
+}
+
+/* Utilitário */
+.muted{ color:var(--color-muted); }
+
+/* Melhora a tipografia padrão para títulos, listas e links */
+h1,h2,h3{ color:var(--color-ink); margin:1rem 0 0.5rem; }
+p{ margin:0 0 1rem 0; }
+ul,ol{ margin:0 0 1rem 1.25rem; }
+
+a{ color:var(--color-brand-600); }
+
+/* Estilo pequeno da barra de cookie / consentimento */
+.cookie-consent{ display:inline-flex; gap:0.5rem; align-items:center; margin-top:1rem; }
+.cookie-consent button{ padding:0.35rem 0.6rem; border-radius:6px; border:1px solid rgba(0,0,0,0.06); }
+
+/* Ajuste de acessibilidade do link de pulo */
+.skip-link {
+  /* fixed top-left control: icon sits inside the AppBar area; the label
+    is absolutely positioned below the AppBar so it won't overlap the menu. */
+  position: fixed;
+  top: 8px; /* place the icon inside the AppBar */
+  left: 1rem;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px; /* keep small for the icon-only state */
+  border-radius: 999px;
+  background: transparent; /* icon will have its own background */
+  color: var(--color-brand-600);
+  text-decoration: none;
+  box-shadow: none;
+
+  /* hidden/low-contrast by default (we still show the icon) */
+  opacity: 0.95;
+  transform: none;
+  pointer-events: auto;
+  transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+/* visible when focused (keyboard navigation) */
+.skip-link:focus,
+.skip-link:focus-visible,
+.skip-link:hover,
+.show-skip-on-load .skip-link {
+  background: var(--color-brand-600);
+  color: var(--color-brand-contrast);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+  padding: 8px 14px; /* expand to show label */
+}
+
+/* ensure no underline when visible */
+.skip-link:focus, .skip-link:focus:active, .skip-link:focus-visible { text-decoration: none; }
+
+/* icon and label styling inside skip-link */
+.skip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-brand-600);
+  box-shadow: 0 2px 8px rgba(2,6,23,0.04);
+}
+.skip-label {
+  /* positioned below the AppBar so it doesn't overlap the nav */
+  position: absolute;
+  /* position the label to the right of the icon so it isn't cut by the window edge */
+  left: 44px;
+  top: calc(var(--app-bar-height, 56px) + 8px); /* below the app bar */
+  transform: translateY(6px);
+  display: inline-block;
+  background: var(--color-brand-600);
+  color: var(--color-brand-contrast);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  white-space: nowrap;
+  font-weight: 700;
+  min-width: 160px;
+  max-width: calc(100vw - 96px);
+}
+
+/* reveal label when hover/focus/show-on-load */
+.skip-link:hover .skip-label,
+.skip-link:focus .skip-label,
+.show-skip-on-load .skip-link .skip-label,
+.skip-link:focus-visible .skip-label {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* (label styles above) */
+
+/* keep it visible by default on small screens for discoverability */
+@media (max-width: 640px) {
+  .skip-link { background: var(--color-brand-600); color: var(--color-brand-contrast); padding: 8px 14px; }
+  .skip-icon { background: transparent; color: var(--color-brand-contrast); box-shadow: none; }
+  .skip-label { opacity: 1; transform: none; }
+}
+
+/* show briefly on initial load when body has class show-skip-on-load */
+.show-skip-on-load .skip-link {
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+@media (min-width: 640px){
+  .hero h1{ font-size:2.8rem; }
+}
+
+@media (min-width: 1024px){
+  .hero h1{ font-size:3.2rem; }
+}
+
+/* Respeita movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* Quando o Tailwind está presente, as classes utilitárias também se aplicam por cima */
+
+/* Classes utilitárias do projeto (usadas na Home / Landing)
+  NOTA: as classes de componente (.section, .wrapper, .card) são geradas via
+  plugin do Tailwind definido em `tailwind.config.ts` (addComponents/addUtilities).
+  Use as classes geradas diretamente no JSX: ex: <section className="section">.
+  Evitamos intencionalmente @apply neste arquivo para prevenir erros de transformação do dev-plugin. */

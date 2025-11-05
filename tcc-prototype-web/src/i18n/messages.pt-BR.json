@@ -1,0 +1,12 @@
+{
+  "hero": {
+    "title": "Foco com Pomodoro + Gamificação",
+    "subtitle": "Um protótipo para estudar foco, recompensas e evolução",
+    "cta": "Começar agora"
+  },
+  "lgpd": {
+    "text": "Usamos armazenamento local para preferências e progresso. Sem backend neste protótipo.",
+    "accept": "Aceitar",
+    "more": "Saiba mais"
+  }
+}

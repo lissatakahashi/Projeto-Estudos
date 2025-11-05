@@ -1,0 +1,31 @@
+services:
+  web:
+    build:
+      context: ./
+      target: builder
+    working_dir: /app
+    # Bind your project into the container for real-time edits. On macOS this can
+    # cause permission issues; we run as root and chown at start to avoid EACCES.
+    volumes:
+      - ./:/app:delegated
+      - /app/node_modules
+    ports:
+      - "5174:5174"
+    environment:
+      NODE_ENV: development
+    stdin_open: true
+    tty: true
+    # Run as root in dev so Vite can write to mounted files on macOS hosts
+    user: root
+    # Ensure mounted files are writable by the container's node user, install
+    # dependencies into the anonymous volume if missing, then start Vite.
+    # Force install dev deps at container start to ensure plugins like
+    # @tailwindcss/vite are present when running Vite in a bind-mounted repo.
+    command: sh -lc "chown -R node:node /app || true && npm ci --legacy-peer-deps --no-audit --no-fund && npm run dev -- --host 0.0.0.0 --port 5174"
+
+# Notes:
+# - Use `docker compose -f docker-compose.dev.yml up --build` to start the dev
+#   environment. It mounts the repo into the container, so editing locally will
+#   trigger Vite HMR inside the container.
+# - The anonymous `/app/node_modules` volume ensures the image's node_modules
+#   are available without being overwritten by a host `node_modules` folder.
