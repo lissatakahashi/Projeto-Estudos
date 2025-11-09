@@ -1,0 +1,32 @@
+.about-root {
+  font-family: Inter, Roboto, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial;
+  color: var(--text-color, #042a2b);
+}
+
+.about-icon {
+  font-size: 24px;
+  display: inline-block;
+  width: 34px;
+  text-align: center;
+}
+
+.about-card {
+  border-radius: 8px;
+  background: var(--card-bg, #fbfdff);
+}
+
+.about-list {
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+  color: var(--muted, #374151);
+}
+
+.about-steps {
+  padding-left: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-root { color: #cfeee9; }
+  .about-card { background: rgba(8,20,24,0.6); }
+  .about-list { color: #cbd5d1; }
+}
