@@ -1,0 +1,28 @@
+.metodologia-root {
+  font-family: Inter, Roboto, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial;
+  color: #042a2b;
+}
+
+.meta-infographic {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.meta-infographic svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .meta-infographic { max-width: 420px; }
+}

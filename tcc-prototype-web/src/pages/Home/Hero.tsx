@@ -1,12 +1,12 @@
-import React from 'react';
-import { motion } from '../../lib/motion';
-import { Link as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { motion } from '../../lib/motion';
 
 const Hero: React.FC = () => {
   return (
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
                 <Button component={RouterLink} to="/pomodoro" variant="contained" color="primary" sx={{ px: 4 }}>
                   Começar agora
                 </Button>
-                <Button component={RouterLink} to="/about" variant="outlined" color="inherit" sx={{ px: 4 }}>
+                <Button component={RouterLink} to="/metodologia" variant="outlined" color="inherit" sx={{ px: 4 }}>
                   Conheça a metodologia
                 </Button>
               </Stack>
